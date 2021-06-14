@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const StyledCollectionTitle = styled.h2`
     font-size:28px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     font-weight:lighter;
     text-transform: capitalize;
+    margin-top:40px;
     
 `
 export const StyledCollectionPreview = styled.div`

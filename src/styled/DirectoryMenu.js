@@ -6,6 +6,7 @@ export const DirectoryMenu = styled.nav`
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
+  margin-top:40px;
 `;
 
 export const MenuItem = styled.div`
