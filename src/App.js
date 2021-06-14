@@ -1,4 +1,5 @@
 import { Route, Switch } from "react-router";
+import Authenticate from "./components/Authenticate";
 import Homepage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
 import Header from "./components/Header";
@@ -10,6 +11,7 @@ function App() {
     <Container>
       <Header />
       <Switch>
+        <Route path="/authenticate" component={Authenticate} />
         <Route path="/shop" component={ShopPage} />
         <Route path="/" component={Homepage} />
       </Switch>

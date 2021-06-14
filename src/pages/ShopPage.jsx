@@ -3,7 +3,7 @@ import CollectionPreview from "../components/CollectionPreview";
 import SHOP_DATA from "./../services/ShopData";
 
 export default function ShopPage({ match }) {
-  const [collections, setCollections] = useState(SHOP_DATA);
+  const collections = useState(SHOP_DATA);
 
   return (
     <div>

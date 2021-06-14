@@ -1,8 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import {
   StyledHeaderContainer,
-  StyledHeaderLogo,
   StyledHeaderMenu,
 } from "./../styled/StyledHeader";
 import { ReactComponent as Logo } from "./../assets/crown.svg";
@@ -10,15 +9,18 @@ import { ReactComponent as Logo } from "./../assets/crown.svg";
 export default function Header() {
   return (
     <StyledHeaderContainer>
-      <StyledHeaderLogo to="/">
+      <Link to="/">
         <Logo />
-      </StyledHeaderLogo>
+      </Link>
       <StyledHeaderMenu>
         <li>
           <NavLink to="/shop">SHOP</NavLink>
         </li>
         <li>
-          <NavLink to="/shop">CONTACT</NavLink>
+          <NavLink to="/contact">CONTACT</NavLink>
+        </li>
+        <li>
+          <NavLink to="/authenticate">LOG IN</NavLink>
         </li>
       </StyledHeaderMenu>
     </StyledHeaderContainer>
