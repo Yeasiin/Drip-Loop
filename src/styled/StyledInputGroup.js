@@ -20,12 +20,6 @@ export const StyledInputGroup = styled.div`
     outline: 0;
   }
 
-  & > .input:focus ~ .inputLabel {
-    top: -14px;
-    font-size: 15px;
-    color: black;
-  }
-
   & > .inputLabel {
     color: gray;
     font-size: 18px;
@@ -35,6 +29,12 @@ export const StyledInputGroup = styled.div`
     left: 5px;
     top: 10px;
     transition: 300ms ease all;
+  }
+  
+  & > .input:focus ~ .inputLabel {
+    top: -14px;
+    font-size: 15px;
+    color: black;
   }
 
   & > .inputLabel.shrink {

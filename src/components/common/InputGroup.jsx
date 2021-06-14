@@ -6,6 +6,7 @@ export default function InputGroup({
   placeHolder,
   type,
   handleChange,
+  value
 }) {
   return (
     <StyledInputGroup>
@@ -15,8 +16,12 @@ export default function InputGroup({
         type={type ? { type } : "text"}
         name={inputFor}
         id={inputFor}
+        value={value}
       />
-      <label className="inputLabel" htmlFor={inputFor}>
+      <label
+        className={`inputLabel${value ? " shrink" : ""}`}
+        htmlFor={inputFor}
+      >
         {placeHolder}
       </label>
     </StyledInputGroup>

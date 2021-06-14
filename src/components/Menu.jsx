@@ -9,7 +9,7 @@ import {
 function Menu({ title, imageUrl, linkUrl, size, history }) {
   return (
     <MenuItem style={ size ? {height:"340px"}: {height:"240px"} } onClick={() => history.push(linkUrl)}>
-      <MenuContent size="hello">
+      <MenuContent>
         <h2>{title}</h2>
         <p>Shop Now</p>
       </MenuContent>
