@@ -5,8 +5,9 @@ import {
   StyledHeaderMenu,
 } from "./../styled/StyledHeader";
 import { ReactComponent as Logo } from "./../assets/crown.svg";
+import { auth } from "./../firebase/firebase.utils";
 
-export default function Header() {
+export default function Header({ currentUser }) {
   return (
     <StyledHeaderContainer>
       <Link to="/">
@@ -19,9 +20,24 @@ export default function Header() {
         <li>
           <NavLink to="/contact">CONTACT</NavLink>
         </li>
-        <li>
-          <NavLink to="/authenticate">LOG IN</NavLink>
-        </li>
+
+        {currentUser ? (
+          <li>
+            <div className="btn-logout" onClick={() => auth.signOut()}>
+              LOG OUT
+            </div>
+          </li>
+        ) : (
+          <li>
+            <NavLink to="/authenticate">LOG IN</NavLink>
+          </li>
+        )}
+
+        {/* <li>
+          <NavLink to="/authenticate">
+            {currentUser ? "LOG OUT" : "LOG IN"}
+          </NavLink>
+        </li> */}
       </StyledHeaderMenu>
     </StyledHeaderContainer>
   );

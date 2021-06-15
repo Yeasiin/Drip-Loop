@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Button from "./common/Button";
 import InputGroup from "./common/InputGroup";
 import { FormWarper } from "./../styled/StyledForm";
+import {ButtonContainer} from "./../styled/StyledButton"
+
+import { signInWithGoogle } from "./../firebase/firebase.utils";
 
 export default class Login extends Component {
   state = { email: "", password: "" };
@@ -36,7 +39,13 @@ export default class Login extends Component {
             type="password"
             value={this.state["password"]}
           />
-          <Button value="Sign In" />
+          <ButtonContainer>
+            <Button value="Sign In" />
+            <Button
+              isGoogleSignIn={signInWithGoogle}
+              value="Sign With Google"
+            />
+          </ButtonContainer>
         </form>
       </FormWarper>
     );

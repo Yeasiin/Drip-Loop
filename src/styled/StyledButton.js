@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const StyledButton = styled.button`
   min-width: 165px;
   width: auto;
@@ -15,10 +20,20 @@ export const StyledButton = styled.button`
   font-weight: lighter;
   border: none;
   cursor: pointer;
+  border: 1px solid transparent;
 
   &:hover {
     background-color: white;
     color: black;
     border: 1px solid black;
+  }
+
+  &.btn-google {
+    background-color: #4285f4;
+    &:hover {
+      border: 1px solid transparent;
+      background-color: #357ae8;
+      color: #fff;
+    }
   }
 `;

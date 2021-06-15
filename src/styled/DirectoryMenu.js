@@ -6,7 +6,7 @@ export const DirectoryMenu = styled.nav`
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
-  margin-top:40px;
+  margin-top: 40px;
 `;
 
 export const MenuItem = styled.div`
@@ -17,11 +17,16 @@ export const MenuItem = styled.div`
   flex-grow: 1;
   flex-shrink: 1;
   position: relative;
-  height: 340px;
+  height: 240px;
+  /* style={ size ? {height:"340px"}: {height:"240px"} } */
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
   transform: scale(1);
+
+  &.large {
+    height: 340px;
+  }
 
   &:hover {
     cursor: pointer;

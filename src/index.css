@@ -1,9 +1,14 @@
+*,*::before,*::after{
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   font-family: "Open Sans Condensed", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 50px 0;
+  box-sizing: border-box;
 }
 
 code {

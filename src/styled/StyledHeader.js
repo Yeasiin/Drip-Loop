@@ -10,10 +10,15 @@ export const StyledHeaderMenu = styled.ul`
   display: flex;
   gap: 25px;
   & > li {
+    cursor: pointer;
     & > a {
-        font-size: 18px;
-        color:#4a4a4a;
-        padding:10px;
+      padding: 10px;
+      font-size: 18px;
+      color: #4a4a4a;
+      display:block;
+    }
+    & > .btn-logout {
+      padding: 10px;
     }
   }
 `;
