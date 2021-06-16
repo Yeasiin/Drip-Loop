@@ -6,14 +6,14 @@ export default function InputGroup({
   placeHolder,
   type,
   handleChange,
-  value
+  value,
 }) {
   return (
     <StyledInputGroup>
       <input
         className="input"
         onChange={handleChange}
-        type={type ? { type } : "text"}
+        type={type ? `${type}` : "text"}
         name={inputFor}
         id={inputFor}
         value={value}

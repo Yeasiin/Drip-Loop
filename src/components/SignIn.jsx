@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Button from "./common/Button";
 import InputGroup from "./common/InputGroup";
-import { FormWarper } from "./../styled/StyledForm";
-import {ButtonContainer} from "./../styled/StyledButton"
+import { FormWarper } from "../styled/StyledForm";
+import { ButtonContainer } from "../styled/StyledButton";
 
-import { signInWithGoogle } from "./../firebase/firebase.utils";
+import { auth, signInWithGoogle } from "../firebase/firebase.utils";
 
-export default class Login extends Component {
+export default class SignIn extends Component {
   state = { email: "", password: "" };
 
   handleChange = (e) => {
@@ -14,9 +14,16 @@ export default class Login extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    this.setState({ email: "", password: "" });
+    const { email, password } = this.state;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: "", password: "" });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   render() {

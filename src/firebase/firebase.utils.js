@@ -13,27 +13,40 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-// firebase.analytics();
 
 export const auth = firebase.auth();
 export const fireStore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
-
 // provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
 provider.setCustomParameters({ prompt: "select_account" });
 
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
+export const createUserProfileDocument = async (userAuth, otherData) => {
+  if (!userAuth) return;
+  const userRef = fireStore.doc(`users/${userAuth.uid}`);
+
+  const snapshot = await userRef.get();
+
+  if (!snapshot.exists) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...otherData,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  return userRef;
+};
+
 export default firebase;
-
-// firebase.auth().signInWithPopup(provider).then(result =>{
-
-//     let credential = result.credential;
-
-//     let token = credential.accessToken;
-
-//     let user = result.user;
-
-// });
