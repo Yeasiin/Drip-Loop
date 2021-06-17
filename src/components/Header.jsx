@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import CartIcon from "./common/CartIcon";
+import CartDropDown from "./CartDropDown";
 import {
   StyledHeaderContainer,
   StyledHeaderMenu,
@@ -8,7 +10,7 @@ import {
 import { ReactComponent as Logo } from "./../assets/crown.svg";
 import { auth } from "./../firebase/firebase.utils";
 
-function Header({ currentUser }) {
+function Header({ currentUser, hidden }) {
   return (
     <StyledHeaderContainer>
       <Link to="/">
@@ -33,19 +35,18 @@ function Header({ currentUser }) {
             <NavLink to="/authenticate">LOG IN</NavLink>
           </li>
         )}
-
-        {/* <li>
-          <NavLink to="/authenticate">
-            {currentUser ? "LOG OUT" : "LOG IN"}
-          </NavLink>
-        </li> */}
+        <li>
+          <CartIcon />
+        </li>
       </StyledHeaderMenu>
+      {hidden ? null : <CartDropDown />}
     </StyledHeaderContainer>
   );
 }
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+  currentUser,
+  hidden,
 });
 
 export default connect(mapStateToProps)(Header);
