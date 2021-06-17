@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
+import { connect } from "react-redux";
 import {
   StyledHeaderContainer,
   StyledHeaderMenu,
@@ -7,7 +8,7 @@ import {
 import { ReactComponent as Logo } from "./../assets/crown.svg";
 import { auth } from "./../firebase/firebase.utils";
 
-export default function Header({ currentUser }) {
+function Header({ currentUser }) {
   return (
     <StyledHeaderContainer>
       <Link to="/">
@@ -42,3 +43,9 @@ export default function Header({ currentUser }) {
     </StyledHeaderContainer>
   );
 }
+
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(Header);
