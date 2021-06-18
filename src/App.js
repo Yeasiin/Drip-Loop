@@ -42,7 +42,7 @@ function App(props) {
           exact
           path="/authenticate"
           render={() =>
-            props.currentUser ? <Redirect to="/notFound" /> : <Authenticate />
+            props.currentUser ? <Redirect to="/" /> : <Authenticate />
           }
         />
         <Route path="/shop" component={ShopPage} />

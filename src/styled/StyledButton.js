@@ -18,14 +18,25 @@ export const StyledButton = styled.button`
   text-transform: uppercase;
   font-family: "Open Sans Condensed";
   font-weight: lighter;
-  border: none;
   cursor: pointer;
   border: 1px solid transparent;
+  display: flex;
+  justify-content: center;
 
   &:hover {
     background-color: white;
     color: black;
     border: 1px solid black;
+  }
+
+  &.inverter {
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
   }
 
   &.btn-google {

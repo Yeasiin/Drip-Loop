@@ -1,11 +1,13 @@
 import { StyledButton } from "./../../styled/StyledButton";
 
-export default function Button({ value, isGoogleSignIn }) {
+export default function Button({ value, isGoogleSignIn, inverter, addItem }) {
   return (
     <StyledButton
-      className={isGoogleSignIn ? "btn-google" : ""}
+      className={`${inverter ? "inverter" : ""} ${
+        isGoogleSignIn ? "btn-google" : ""
+      }`}
       type="submit"
-      onClick={isGoogleSignIn}
+      onClick={isGoogleSignIn ? isGoogleSignIn : addItem}
     >
       {value}
     </StyledButton>
