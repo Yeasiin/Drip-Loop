@@ -1,6 +1,7 @@
 import { StyledButton } from "./../../styled/StyledButton";
 
-export default function Button({ value, isGoogleSignIn, inverter, addItem }) {
+export default function Button(props) {
+  const { value, isGoogleSignIn, inverter, addItem } = props;
   return (
     <StyledButton
       className={`${inverter ? "inverter" : ""} ${

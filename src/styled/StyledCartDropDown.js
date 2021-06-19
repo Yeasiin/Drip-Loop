@@ -18,6 +18,11 @@ export const StyledCartDropDown = styled.div`
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+
+    & > .empty-message {
+      margin: 50px auto;
+      font-size: 120%;
+    }
   }
 
   & > button {

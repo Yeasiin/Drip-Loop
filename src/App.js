@@ -2,20 +2,21 @@ import { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router";
 import { ToastContainer } from "react-toastify";
 import { connect } from "react-redux";
-import Authenticate from "./components/Authenticate";
+import { createStructuredSelector } from "reselect";
+import { setCurrentUser } from "./Redux/user/userAction";
 import Homepage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
+import CheckOut from "./pages/CheckOut";
+import Authenticate from "./components/Authenticate";
 import Header from "./components/Header";
-import { setCurrentUser } from "./Redux/user/userAction";
+import { selectCurrentUser } from "./Redux/user/userSelector";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+
 import { Container } from "./styled/Container";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-
 function App(props) {
-  // const [currentUser, setCurrentUser] = useState(null);
-
   useEffect(() => {
     const unSubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -45,6 +46,7 @@ function App(props) {
             props.currentUser ? <Redirect to="/" /> : <Authenticate />
           }
         />
+        <Route path="/Checkout" component={CheckOut} />
         <Route path="/shop" component={ShopPage} />
         <Route path="/" component={Homepage} />
       </Switch>
@@ -52,7 +54,9 @@ function App(props) {
   );
 }
 
-const mapStateToProps = ({ user }) => ({ currentUser: user.currentUser });
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
