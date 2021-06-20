@@ -25,7 +25,11 @@ export const StyledCheckOutItem = styled.div`
   }
 
   & > .quantity {
-    padding-left: 20px;
+   display: flex;
+   gap:10px;
+   &> .arrow{
+     cursor:pointer;
+   }
   }
 
   & > .remove-button {
