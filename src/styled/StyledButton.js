@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 `;
 
 export const StyledButton = styled.button`
