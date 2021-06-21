@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import { addItem } from "../Redux/cart/cartAction";
 import Button from "./common/Button";
-import { StyledCollection } from "./../styled/StyledCollection";
+import { StyledCollectionItem } from "./../styled/StyledCollection";
 
 function CollectionItem({ item, addItem }) {
   const { id, name, price, imageUrl } = item;
   return (
-    <StyledCollection>
+    <StyledCollectionItem>
       <div
         className="CollectionImage"
         style={{ backgroundImage: `url(${imageUrl})` }}
@@ -16,7 +16,7 @@ function CollectionItem({ item, addItem }) {
         <span>${price}</span>
       </div>
       <Button addItem={() => addItem(item)} inverter value="Add To Cart" />
-    </StyledCollection>
+    </StyledCollectionItem>
   );
 }
 
