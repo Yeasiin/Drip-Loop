@@ -31,4 +31,15 @@ export const StyledCheckOut = styled.div`
     margin-left: auto;
     font-size: 36px;
   }
+  & > .test-warring {
+    text-align: center;
+    color: #f00;
+    font-size: 24px;
+    margin-top: 40px;
+  }
+
+  & > button {
+    margin-left: auto;
+    margin-top: 50px;
+  }
 `;
