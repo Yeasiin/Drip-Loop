@@ -18,7 +18,6 @@ export const auth = firebase.auth();
 export const fireStore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
-// provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
 provider.setCustomParameters({ prompt: "select_account" });
 
@@ -47,6 +46,34 @@ export const createUserProfileDocument = async (userAuth, otherData) => {
   }
 
   return userRef;
+};
+
+export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
+  const collectionRef = fireStore.collection(collectionKey);
+  const batch = fireStore.batch();
+
+  objectToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  return await batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformCollection = collections.docs.map((docSnapShot) => {
+    const { title, items } = docSnapShot.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: docSnapShot.id,
+      title,
+      items,
+    };
+  });
+  return transformCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
 };
 
 export default firebase;

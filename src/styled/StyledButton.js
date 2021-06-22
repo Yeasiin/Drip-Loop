@@ -1,10 +1,46 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 20px;
 `;
+
+const buttonStyle = css`
+  background-color: black;
+  color: white;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
+
+const googleSingInButton = css`
+  background-color: #4285f4;
+  &:hover {
+    border: 1px solid transparent;
+    background-color: #357ae8;
+    color: #fff;
+  }
+`;
+
+const inverter = css`
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  &:hover {
+    background-color: black;
+    color: #fff;
+  }
+`;
+
+const getButtonStyle = (props) => {
+  if (props.isGoogleSignIn) {
+    return googleSingInButton;
+  }
+  return props.inverter ? inverter : buttonStyle;
+};
 
 export const StyledButton = styled.button`
   min-width: 165px;
@@ -25,27 +61,7 @@ export const StyledButton = styled.button`
   justify-content: center;
 
   &:hover {
-    background-color: white;
-    color: black;
     border: 1px solid black;
   }
-
-  &.inverter {
-    border: 1px solid black;
-    background-color: white;
-    color: black;
-    &:hover {
-      background-color: black;
-      color: white;
-    }
-  }
-
-  &.btn-google {
-    background-color: #4285f4;
-    &:hover {
-      border: 1px solid transparent;
-      background-color: #357ae8;
-      color: #fff;
-    }
-  }
+  ${getButtonStyle}
 `;

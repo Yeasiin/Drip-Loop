@@ -1,14 +1,19 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import {
   StyledCollectionPreview,
   StyledCollectionTitle,
 } from "../styled/StyledCollection";
 import CollectionItem from "../components/CollectionItem";
 
-export default function CollectionPreview({ title, items }) {
+function CollectionPreview({ title, items, routeName, history, match }) {
   return (
     <div>
-      <StyledCollectionTitle>{title.toUpperCase()}</StyledCollectionTitle>
+      <StyledCollectionTitle
+        onClick={() => history.push(match.url + "/" + routeName)}
+      >
+        {title.toUpperCase()}
+      </StyledCollectionTitle>
       <StyledCollectionPreview>
         {items
           .filter((item, idx) => idx < 4)
@@ -19,3 +24,5 @@ export default function CollectionPreview({ title, items }) {
     </div>
   );
 }
+
+export default withRouter(CollectionPreview);

@@ -4,7 +4,7 @@ import Button from "./common/Button";
 import { StyledCollectionItem } from "./../styled/StyledCollection";
 
 function CollectionItem({ item, addItem }) {
-  const { id, name, price, imageUrl } = item;
+  const { name, price, imageUrl } = item;
   return (
     <StyledCollectionItem>
       <div
@@ -15,7 +15,12 @@ function CollectionItem({ item, addItem }) {
         <span>{name}</span>
         <span>${price}</span>
       </div>
-      <Button addItem={() => addItem(item)} inverter value="Add To Cart" />
+      <Button
+        className="inverter"
+        addItem={() => addItem(item)}
+        inverter
+        value="Add To Cart"
+      />
     </StyledCollectionItem>
   );
 }

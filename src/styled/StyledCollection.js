@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const StyledCollectionTitle = styled.h2`
   font-size: 28px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-weight: lighter;
   text-transform: capitalize;
   margin-top: 40px;
+  cursor: pointer;
 `;
 export const StyledCollectionPreview = styled.div`
   display: grid;
@@ -32,7 +33,6 @@ export const StyledCollectionItem = styled.div`
       transform: translateY(0);
       visibility: visible;
       opacity: 1;
-      /* display: block; */
     }
   }
 
