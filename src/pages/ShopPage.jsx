@@ -5,12 +5,10 @@ import CollectionsOverViewContainer from "./../components/CollectionOverViewCont
 import CollectionPageContainer from "./../components/CollectionPageContainer";
 import { fetchCollectionsStart } from "../Redux/shop/shopAction";
 
-function ShopPage(props) {
-  const { match, fetchCollectionsStart } = props;
-
+function ShopPage({ match, fetchCollectionsStart }) {
   useEffect(() => {
     fetchCollectionsStart();
-  }, []);
+  }, [fetchCollectionsStart]);
 
   return (
     <Switch>

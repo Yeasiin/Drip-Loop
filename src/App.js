@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-
 import { ToastContainer } from "react-toastify";
-
 import Homepage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
 import CheckOut from "./pages/CheckOut";
@@ -18,10 +16,10 @@ import { Container } from "./styled/Container";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 
-function App(props) {
+function App({ checkUserSession, currentUser }) {
   useEffect(() => {
-    props.checkUserSession();
-  }, []);
+    checkUserSession();
+  }, [checkUserSession]);
 
   return (
     <Container>
@@ -31,9 +29,7 @@ function App(props) {
         <Route
           exact
           path="/authenticate"
-          render={() =>
-            props.currentUser ? <Redirect to="/" /> : <Authenticate />
-          }
+          render={() => (currentUser ? <Redirect to="/" /> : <Authenticate />)}
         />
         <Route path="/Checkout" component={CheckOut} />
         <Route path="/shop" component={ShopPage} />

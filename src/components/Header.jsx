@@ -10,8 +10,7 @@ import {
   StyledHeaderContainer,
   StyledHeaderMenu,
 } from "./../styled/StyledHeader";
-import { ReactComponent as Logo } from "./../assets/crown.svg";
-import { auth } from "./../firebase/firebase.utils";
+import { ReactComponent as Logo } from "./../assets/crown.svg"; 
 import { signOutStart } from "./../Redux/user/userAction";
 
 function Header({ currentUser, hidden, signOutStart }) {

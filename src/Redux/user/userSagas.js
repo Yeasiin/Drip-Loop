@@ -107,7 +107,7 @@ export function* userSages() {
   yield all([
     call(onGoogleSignInStart),
     call(onEmailSignIn),
-    call(isUserAuthenticated),
+    call(onCheckUserSession),
     call(onSignOutStart),
     call(onSignUpStart),
     call(onSignUpSuccess),
