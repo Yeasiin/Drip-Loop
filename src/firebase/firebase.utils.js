@@ -17,11 +17,18 @@ firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const fireStore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
-provider.setCustomParameters({ prompt: "select_account" });
-
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const getCurrentUser = () => {
+  return new Promise((res, rej) => {
+    const unSubscribe = auth.onAuthStateChanged((userAuth) => {
+      unSubscribe();
+      res(userAuth);
+    },rej);
+  });
+};
 
 export const createUserProfileDocument = async (userAuth, otherData) => {
   if (!userAuth) return;

@@ -1,45 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import CollectionPage from "./CollectionPage";
-import WithSpinner from "../components/common/WithSpinner";
-import CollectionOverview from "../components/CollectionOverview";
-import { updateCollections } from "../Redux/shop/shopAction";
-import {
-  fireStore,
-  convertCollectionsSnapshotToMap,
-} from "./../firebase/firebase.utils";
+import CollectionsOverViewContainer from "./../components/CollectionOverViewContainer";
+import CollectionPageContainer from "./../components/CollectionPageContainer";
+import { fetchCollectionsStart } from "../Redux/shop/shopAction";
 
-const CollectionOverviewWithSpinner = WithSpinner(CollectionOverview);
-const CollectionPageWithSpinner = WithSpinner(CollectionPage);
-
-function ShopPage({ match, updateCollections }) {
-  const [loading, isLoading] = useState(true);
+function ShopPage(props) {
+  const { match, fetchCollectionsStart } = props;
 
   useEffect(() => {
-    const collectionRef = fireStore.collection("collections");
-    collectionRef.onSnapshot(async (SnapShot) => {
-      const collectionsMap = convertCollectionsSnapshotToMap(SnapShot);
-      updateCollections(collectionsMap);
-      isLoading(false);
-    });
+    fetchCollectionsStart();
   }, []);
 
-  console.log(match);
   return (
     <Switch>
-      <Route
-        exact
-        path={match.path}
-        render={(props) => (
-          <CollectionOverviewWithSpinner isLoading={loading} {...props} />
-        )}
-      />
+      <Route exact path={match.path} component={CollectionsOverViewContainer} />
       <Route
         path={`${match.path}/:collectionId`}
-        render={(props) => (
-          <CollectionPageWithSpinner isLoading={loading} {...props} />
-        )}
+        component={CollectionPageContainer}
       />
     </Switch>
   );
@@ -47,8 +25,7 @@ function ShopPage({ match, updateCollections }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateCollections: (collectionMap) =>
-      dispatch(updateCollections(collectionMap)),
+    fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
   };
 };
 

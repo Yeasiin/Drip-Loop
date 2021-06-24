@@ -17,7 +17,7 @@ function CollectionItem({ item, addItem }) {
       </div>
       <Button
         className="inverter"
-        addItem={() => addItem(item)}
+        onClick={() => addItem(item)}
         inverter
         value="Add To Cart"
       />

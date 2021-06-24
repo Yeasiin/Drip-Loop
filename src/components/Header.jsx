@@ -12,8 +12,9 @@ import {
 } from "./../styled/StyledHeader";
 import { ReactComponent as Logo } from "./../assets/crown.svg";
 import { auth } from "./../firebase/firebase.utils";
+import { signOutStart } from "./../Redux/user/userAction";
 
-function Header({ currentUser, hidden }) {
+function Header({ currentUser, hidden, signOutStart }) {
   return (
     <StyledHeaderContainer>
       <Link to="/">
@@ -29,7 +30,7 @@ function Header({ currentUser, hidden }) {
 
         {currentUser ? (
           <li>
-            <div className="btn-logout" onClick={() => auth.signOut()}>
+            <div className="btn-logout" onClick={signOutStart}>
               LOG OUT
             </div>
           </li>
@@ -49,7 +50,11 @@ function Header({ currentUser, hidden }) {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  hidden: selectCartHidden
+  hidden: selectCartHidden,
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+  signOutStart: () => dispatch(signOutStart()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

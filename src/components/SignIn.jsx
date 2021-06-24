@@ -1,12 +1,17 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Button from "./common/Button";
 import InputGroup from "./common/InputGroup";
 import { FormWarper } from "../styled/StyledForm";
 import { ButtonContainer } from "../styled/StyledButton";
 
 import { auth, signInWithGoogle } from "../firebase/firebase.utils";
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "./../Redux/user/userAction";
 
-export default class SignIn extends Component {
+class SignIn extends Component {
   state = { email: "", password: "" };
 
   handleChange = (e) => {
@@ -16,17 +21,15 @@ export default class SignIn extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    const { emailSignInStart } = this.props;
     const { email, password } = this.state;
 
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      this.setState({ email: "", password: "" });
-    } catch (error) {
-      console.log(error.message);
-    }
+    emailSignInStart(email, password);
   };
 
   render() {
+    const { googleSignInStart } = this.props;
+    console.log("testing", googleSignInStart);
     return (
       <FormWarper>
         <h2>I already have an account</h2>
@@ -47,9 +50,11 @@ export default class SignIn extends Component {
             value={this.state["password"]}
           />
           <ButtonContainer>
-            <Button value="Sign In" />
+            <Button type="submit" value="Sign In" />
             <Button
-              isGoogleSignIn={signInWithGoogle}
+              onClick={googleSignInStart}
+              type="button"
+              className="google"
               value="Sign With Google"
             />
           </ButtonContainer>
@@ -58,3 +63,11 @@ export default class SignIn extends Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
+  emailSignInStart: (email, password) =>
+    dispatch(emailSignInStart({ email, password })),
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);
