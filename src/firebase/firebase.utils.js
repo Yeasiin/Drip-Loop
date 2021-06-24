@@ -26,11 +26,11 @@ export const getCurrentUser = () => {
     const unSubscribe = auth.onAuthStateChanged((userAuth) => {
       unSubscribe();
       res(userAuth);
-    },rej);
+    }, rej);
   });
 };
 
-export const createUserProfileDocument = async (userAuth, otherData) => {
+export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
   const userRef = fireStore.doc(`users/${userAuth.uid}`);
 
@@ -45,7 +45,7 @@ export const createUserProfileDocument = async (userAuth, otherData) => {
         displayName,
         email,
         createdAt,
-        ...otherData,
+        ...additionalData,
       });
     } catch (error) {
       console.log(error.message);
