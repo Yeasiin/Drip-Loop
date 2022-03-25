@@ -1,25 +1,40 @@
 import React from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import { selectCollection } from "../Redux/shop/shopSelector";
-import {
-  StyledCollection,
-  StyledCollectionPreview,
-} from "./../styled/StyledCollection";
 import CollectionItem from "../components/CollectionItem";
+import { Container } from "../styled/Container";
 
 function CollectionPage({ collections }) {
   console.log(collections);
   return (
-    <StyledCollection>
-      <h2 className="Collection-Title">{collections.title}</h2>
-      <StyledCollectionPreview>
-        {collections.items.map((collection) => (
-          <CollectionItem key={collection.id} item={collection} />
-        ))}
-      </StyledCollectionPreview>
-    </StyledCollection>
+    <Container>
+      <StyledCollection>
+        <h2 className="collection-title">{collections.title}</h2>
+        <div className="collection-preview">
+          {collections.items.map((collection) => (
+            <CollectionItem key={collection.id} item={collection} />
+          ))}
+        </div>
+      </StyledCollection>
+    </Container>
   );
 }
+
+const StyledCollection = styled.div`
+  text-align: center;
+  & > .collection-title {
+    text-transform: capitalize;
+    font-size: 30px;
+  }
+
+  & > .collection-preview {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(10px, 1fr));
+    gap: 20px;
+  }
+`;
+
 const mapStateToProps = (state, ownProps) => ({
   collections: selectCollection(ownProps.match.params.collectionId)(state),
 });

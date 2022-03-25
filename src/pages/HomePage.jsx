@@ -1,23 +1,18 @@
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { selectDirectorySection } from "./../Redux/directory/directorySelector";
-import Menu from "../components/Menu";
-import { DirectoryMenu } from "./../styled/DirectoryMenu";
+import Directory from "../components/Directory";
+import HeroArea from "../components/HeroArea";
+import Newsletter from "../components/Newsletter";
+import { Container } from "./../styled/Container";
 
-function HomePage({ sections }) {
+function HomePage() {
   return (
-    <div>
-      <DirectoryMenu>
-        {sections.map((section) => (
-          <Menu key={section.id} {...section} />
-        ))}
-      </DirectoryMenu>
-    </div>
+    <>
+      <HeroArea />
+      <Container>
+        <Directory />
+        <Newsletter />
+      </Container>
+    </>
   );
 }
 
-const mapStateToProps = createStructuredSelector({
-  sections: selectDirectorySection,
-});
-
-export default connect(mapStateToProps)(HomePage);
+export default HomePage;

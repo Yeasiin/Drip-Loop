@@ -10,40 +10,43 @@ import {
   StyledHeaderContainer,
   StyledHeaderMenu,
 } from "./../styled/StyledHeader";
-import { ReactComponent as Logo } from "./../assets/crown.svg"; 
+import { Container } from "./../styled/Container";
+import { ReactComponent as Logo } from "./../assets/drip-logo.svg";
 import { signOutStart } from "./../Redux/user/userAction";
 
 function Header({ currentUser, hidden, signOutStart }) {
   return (
-    <StyledHeaderContainer>
-      <Link to="/">
-        <Logo />
-      </Link>
-      <StyledHeaderMenu>
-        <li>
-          <NavLink to="/shop">SHOP</NavLink>
-        </li>
-        <li>
-          <NavLink to="/contact">CONTACT</NavLink>
-        </li>
+    <Container>
+      <StyledHeaderContainer>
+        <Link to="/">
+          <Logo />
+        </Link>
+        <StyledHeaderMenu>
+          <li>
+            <NavLink to="/shop">Shop</NavLink>
+          </li>
+          <li>
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
 
-        {currentUser ? (
+          {currentUser ? (
+            <li>
+              <div className="btn-logout" onClick={signOutStart}>
+                Logout
+              </div>
+            </li>
+          ) : (
+            <li>
+              <NavLink to="/authenticate">Login</NavLink>
+            </li>
+          )}
           <li>
-            <div className="btn-logout" onClick={signOutStart}>
-              LOG OUT
-            </div>
+            <CartIcon />
           </li>
-        ) : (
-          <li>
-            <NavLink to="/authenticate">LOG IN</NavLink>
-          </li>
-        )}
-        <li>
-          <CartIcon />
-        </li>
-      </StyledHeaderMenu>
-      {hidden ? null : <CartDropDown />}
-    </StyledHeaderContainer>
+        </StyledHeaderMenu>
+        {hidden ? null : <CartDropDown />}
+      </StyledHeaderContainer>
+    </Container>
   );
 }
 

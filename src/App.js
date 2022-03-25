@@ -8,10 +8,11 @@ import ShopPage from "./pages/ShopPage";
 import CheckOut from "./pages/CheckOut";
 import Authenticate from "./components/Authenticate";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 import { selectCurrentUser } from "./Redux/user/userSelector";
 import { checkUserSession } from "./Redux/user/userAction";
-import { Container } from "./styled/Container";
+// import { Container } from "./styled/Container";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -22,7 +23,7 @@ function App({ checkUserSession, currentUser }) {
   }, [checkUserSession]);
 
   return (
-    <Container>
+    <>
       <ToastContainer />
       <Header />
       <Switch>
@@ -35,7 +36,9 @@ function App({ checkUserSession, currentUser }) {
         <Route path="/shop" component={ShopPage} />
         <Route path="/" component={Homepage} />
       </Switch>
-    </Container>
+      {/* TODO: Add A Footer */}
+      <Footer />
+    </>
   );
 }
 

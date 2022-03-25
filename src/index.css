@@ -1,13 +1,16 @@
-*,*::before,*::after{
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 body {
   margin: 0;
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: "Alegreya Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 50px 0;
   box-sizing: border-box;
 }
 

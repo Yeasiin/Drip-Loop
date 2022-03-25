@@ -1,25 +1,5 @@
 import styled from "styled-components";
 
-export const StyledCollectionTitle = styled.h2`
-  font-size: 28px;
-  margin-bottom: 20px;
-  font-weight: lighter;
-  text-transform: capitalize;
-  margin-top: 40px;
-  cursor: pointer;
-`;
-export const StyledCollectionPreview = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, minmax(10px, 1fr));
-  gap: 20px;
-`;
-export const StyledCollection = styled.div`
-  text-align: center;
-  & > .Collection-Title {
-    text-transform: capitalize;
-    font-size: 30px;
-  }
-`;
 export const StyledCollectionItem = styled.div`
   height: 340px;
   cursor: pointer;
