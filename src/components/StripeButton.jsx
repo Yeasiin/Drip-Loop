@@ -11,11 +11,11 @@ export default function StripeCheckoutButton({ price }) {
   };
   return (
     <StripeCheckout
-      name="Crown Clothing"
+      name="Drip Loop"
       label="Pay Now"
       billingAddress
       shippingAddress
-      image="https://svgshare.com/i/CUz.svg"
+      image="https://i.ibb.co/T8JpXv3/Group-17.jpg"
       description={`Your Total is $${price}`}
       amount={priceForStripe}
       panelLabel="Pay Now"

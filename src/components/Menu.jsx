@@ -1,13 +1,16 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function Menu({ title, imageUrl, linkUrl, size, history }) {
   return (
-    <Wrapper className={size} onClick={() => history.push(linkUrl)}>
+    <Wrapper className={size}>
       <div className="menu-content">
         <h2>{title}</h2>
-        <p>Shop Now</p>
+        <Link className="btn" to={linkUrl}>
+          Shop Now
+        </Link>
       </div>
       <BackgroundImage imageUrl={imageUrl} />
     </Wrapper>
@@ -18,7 +21,7 @@ const Wrapper = styled.div`
   min-width: 30%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-grow: 1;
   flex-shrink: 1;
   position: relative;
@@ -42,7 +45,7 @@ const Wrapper = styled.div`
   & > .menu-content {
     display: flex;
     padding: 15px 50px;
-    background-color: #fffffff6;
+    margin-bottom: 50px;
     flex-direction: column;
     text-align: center;
     z-index: 1;
@@ -50,23 +53,22 @@ const Wrapper = styled.div`
     text-transform: capitalize;
     transition: transform 0.6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     & > h2 {
-      margin: 0;
-      font-weight: bold;
-      margin-bottom: 6px;
-      font-size: 22px;
-      color: #4a4a4a;
-    }
-    & > p {
-      margin: 0;
-      font-weight: lighter;
-      font-size: 16px;
+      font-size: 32px;
+      margin: 10px 0;
+      color: #fff;
     }
   }
 `;
 
 const BackgroundImage = styled.div`
   position: absolute;
-  background-image: url(${(props) => props.imageUrl});
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.5557957338483146) 53%,
+      rgba(0, 0, 0, 0.8451215765449438) 100%
+    ),
+    url(${(props) => props.imageUrl});
   left: 0;
   top: 0;
   background-position: center;

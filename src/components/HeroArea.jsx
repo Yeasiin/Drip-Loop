@@ -7,7 +7,8 @@ function HeroArea() {
     <Wrapper>
       <Container>
         <div className="hero__card">
-          <h1>Luxury, For the Woman Who Deserves It</h1>
+          {/* <h1>Luxury, For the Woman Who Deserves It</h1> */}
+          <h1> Clothes that you will feel too. </h1>
           <p>
             Embrace fashion in full color with head-turning hues, striking
             silhouettes and vibrant accessories
@@ -43,15 +44,8 @@ const Wrapper = styled.div`
     }
     & > p {
       font-size: 18px;
-      margin: 15px 0;
+      margin: 15px 0 20px;
       color: #223e3f;
-    }
-    & > .btn {
-      background-color: #223e3f;
-      color: #fff;
-      padding: 10px 15px;
-      display: inline-block;
-      margin-top: 5px;
     }
   }
 `;

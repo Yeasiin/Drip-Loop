@@ -2,26 +2,26 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import styled from "styled-components";
+
 import CartIcon from "./common/CartIcon";
 import CartDropDown from "./CartDropDown";
+
 import { selectCartHidden } from "./../Redux/cart/cartSelectors";
 import { selectCurrentUser } from "./../Redux/user/userSelector";
-import {
-  StyledHeaderContainer,
-  StyledHeaderMenu,
-} from "./../styled/StyledHeader";
+import { signOutStart } from "./../Redux/user/userAction";
+
 import { Container } from "./../styled/Container";
 import { ReactComponent as Logo } from "./../assets/drip-logo.svg";
-import { signOutStart } from "./../Redux/user/userAction";
 
 function Header({ currentUser, hidden, signOutStart }) {
   return (
     <Container>
-      <StyledHeaderContainer>
+      <HeaderContainerWrapper>
         <Link to="/">
           <Logo />
         </Link>
-        <StyledHeaderMenu>
+        <ul className="header-menu">
           <li>
             <NavLink to="/shop">Shop</NavLink>
           </li>
@@ -43,12 +43,38 @@ function Header({ currentUser, hidden, signOutStart }) {
           <li>
             <CartIcon />
           </li>
-        </StyledHeaderMenu>
+        </ul>
         {hidden ? null : <CartDropDown />}
-      </StyledHeaderContainer>
+      </HeaderContainerWrapper>
     </Container>
   );
 }
+
+const HeaderContainerWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0 10px;
+
+  & > .header-menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    & > li {
+      cursor: pointer;
+      & > a {
+        padding: 10px;
+        font-size: 18px;
+        color: #4a4a4a;
+        display: block;
+      }
+      & > .btn-logout {
+        padding: 10px;
+      }
+    }
+  }
+`;
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,

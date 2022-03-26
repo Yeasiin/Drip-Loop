@@ -23,3 +23,18 @@ code {
 a {
   text-decoration: none;
 }
+.btn {
+  background-color: #223e3f;
+  color: #fff;
+  padding: 10px 15px;
+  margin: 0;
+  font-size: 18px;
+  display: inline-block;
+  border: 1px solid transparent;
+  transition: 0.3s ease-in-out;
+}
+.btn:hover {
+  background-color: #fff;
+  color: #223e3f;
+  border-color: #223e3f;
+}

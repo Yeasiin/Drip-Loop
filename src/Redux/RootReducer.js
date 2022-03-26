@@ -7,7 +7,7 @@ import directoryReducer from "./directory/directoryReducer";
 import shopReducer from "./shop/shopReducer";
 
 const persistConfig = {
-  key: "crown-commerce",
+  key: "drip-loop",
   storage,
   whitelist: ["cart"],
 };

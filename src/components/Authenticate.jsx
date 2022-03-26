@@ -1,9 +1,9 @@
 import React from "react";
+import styled from "styled-components";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import { RegisterWarper } from "./../styled/StyledForm";
 
-export default function Authenticate() {
+function Authenticate() {
   return (
     <RegisterWarper>
       <SignIn />
@@ -11,3 +11,12 @@ export default function Authenticate() {
     </RegisterWarper>
   );
 }
+
+const RegisterWarper = styled.div`
+  display: flex;
+  margin: 20px 100px;
+  gap: 200px;
+  overflow: hidden;
+  justify-content: space-between;
+`;
+export default Authenticate;

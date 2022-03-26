@@ -75,7 +75,7 @@ const Wrapper = styled.div`
   }
   & > .test-warring {
     text-align: center;
-    color: #f00;
+    color: #868eff;
     font-size: 24px;
     margin-top: 40px;
   }

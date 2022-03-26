@@ -11,10 +11,3 @@ export const FormWarper = styled.div`
         font-size: 110%;
     }
 `;
-export const RegisterWarper = styled.div`
-  display: flex;
-  margin: 20px 100px;
-  gap: 200px;
-  overflow: hidden;
-  justify-content: space-between;
-`;
