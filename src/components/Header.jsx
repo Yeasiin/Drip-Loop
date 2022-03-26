@@ -25,7 +25,7 @@ function Header({ currentUser, hidden, signOutStart }) {
           <li>
             <NavLink to="/shop">Shop</NavLink>
           </li>
-          <li>
+          <li className="contact">
             <NavLink to="/contact">Contact</NavLink>
           </li>
 
@@ -71,6 +71,11 @@ const HeaderContainerWrapper = styled.div`
       }
       & > .btn-logout {
         padding: 10px;
+      }
+    }
+    .contact {
+      @media (max-width: 560px) {
+        display: none;
       }
     }
   }

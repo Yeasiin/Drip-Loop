@@ -77,9 +77,12 @@ const Wrapper = styled.div`
     padding-bottom: 50px;
     padding-top: 50px;
 
-    & > .footer-left {
-      flex-grow: 1;
+    @media (max-width: 940px) {
+      flex-direction: column;
+    }
 
+    & > .footer-left {
+      flex-basis: 40%;
       & > .d-flex {
         display: flex;
         flex-wrap: wrap;
@@ -93,14 +96,18 @@ const Wrapper = styled.div`
       }
     }
     & > .footer-right {
-      flex-grow: 10;
+      flex-basis: 60%;
 
       & > .footer-location {
         display: flex;
         font-size: 18px;
 
+        @media (max-width: 1015px) {
+          font-size: 14px;
+        }
+
         & > * {
-          flex-basis: 100%;
+          flex-basis: 33%;
         }
         p {
           margin: 10px 0;
