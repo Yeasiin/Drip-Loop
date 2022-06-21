@@ -17,10 +17,21 @@ import { checkUserSession } from "./Redux/user/userAction";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 
+import ReactGA from "react-ga4";
+ReactGA.initialize("G-R7ZM4V604S");
+
 function App({ checkUserSession, currentUser }) {
   useEffect(() => {
     checkUserSession();
   }, [checkUserSession]);
+
+  // for google Analytic
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname + window.location.search,
+    });
+  }, []);
 
   return (
     <>
